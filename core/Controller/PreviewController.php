@@ -88,7 +88,7 @@ class PreviewController extends Controller {
 	 * @param string $mode
 	 * @return DataResponse|FileDisplayResponse
 	 */
-	public function getPreviewByPath(
+	public function getPreview (
 		string $file = '',
 		int $x = 32,
 		int $y = 32,
@@ -107,7 +107,7 @@ class PreviewController extends Controller {
 			return new DataResponse([], Http::STATUS_NOT_FOUND);
 		}
 
-		return $this->getPreview($node, $x, $y, $a, $forceIcon, $mode);
+		return $this->fetchPreview($node, $x, $y, $a, $forceIcon, $mode);
 	}
 
 	/**
@@ -144,7 +144,7 @@ class PreviewController extends Controller {
 
 		$node = array_pop($nodes);
 
-		return $this->getPreview($node, $x, $y, $a, $forceIcon, $mode);
+		return $this->fetchPreview($node, $x, $y, $a, $forceIcon, $mode);
 	}
 
 	/**
@@ -156,7 +156,7 @@ class PreviewController extends Controller {
 	 * @param string $mode
 	 * @return DataResponse|FileDisplayResponse
 	 */
-	private function getPreview(
+	private function fetchPreview(
 		Node $node,
 		int $x,
 		int $y,
